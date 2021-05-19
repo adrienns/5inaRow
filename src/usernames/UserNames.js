@@ -6,6 +6,7 @@ const UserNames = ({ username, setUsername }) => {
   const [player2, setPlayer2] = useState("");
 
   console.log(player1, player2);
+
   const handlePlayer1 = (e) => {
     const value = e.target.value;
     setPlayer1(value);

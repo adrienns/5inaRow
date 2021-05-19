@@ -20,8 +20,8 @@ function App() {
         <AmobaGrid username={username} setUsername={setUsername} />
       </div>
       <div className="usernames">
-        <div> Játékos 1 : {username[1]}</div>
-        <div> Játékos 2 : {username[2]}</div>
+        <div> Játékos 1 : {username[0]}</div>
+        <div> Játékos 2 : {username[1]}</div>
       </div>
     </div>
   );

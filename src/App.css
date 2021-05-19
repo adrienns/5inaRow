@@ -12,12 +12,11 @@
   text-shadow: 2px 2px rgb(247, 159, 159);
   margin: 0px 98px 0px 98px;
   border-radius: 10px;
-  box-shadow: 0 2px 30px;
   text-align: center;
 
   margin-bottom: 40px;
   padding: 10px;
-  font-size: 25px;
+  font-size: 35px;
 }
 
 .game-description-container {
