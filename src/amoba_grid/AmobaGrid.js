@@ -3,7 +3,7 @@ import Cell from "../cell/Cell";
 import "./AmobaGrid.css";
 
 const GRID_NUM = 10;
-const AmobaGrid = ({ username }) => {
+const AmobaGrid = () => {
   const [cells, setCells] = useState([]);
   const [switchPlayer, setSwitchPlayer] = useState(1);
 
@@ -13,9 +13,7 @@ const AmobaGrid = ({ username }) => {
       let subarray = cells[i];
       for (let j = 0; j < subarray.length; j++) {
         let currObj = subarray[j];
-        // if (currObj == undefined) {
-        //   debugger;
-        // }
+
         if (currObj.value === playerId) {
           score += 1;
         } else {
@@ -152,30 +150,19 @@ const AmobaGrid = ({ username }) => {
         checkWinnerInRows(1);
         checkWinnerInColoumns(1);
         checkWinnerInDiagonals(1);
-        setSwitchPlayer(0);
+        setSwitchPlayer(2);
       } else {
-        selectedItem.value = 0;
-        checkWinnerInRows(0);
-        checkWinnerInColoumns(0);
-        checkWinnerInDiagonals(0);
+        selectedItem.value = 2;
+        checkWinnerInRows(2);
+        checkWinnerInColoumns(2);
+        checkWinnerInDiagonals(2);
         setSwitchPlayer(1);
 
         selectedItem.isChecked = true;
       }
     }
-    // deep copy of the object element that i want to change-
-    // const selectedItem = { ...copiedCells[index] };
 
-    //change the element
-    // selectedItem.isChecked = true;
-
-    //assignthe changed element to the copied array
-    // copiedCells[index] = selectedItem;
-
-    // change state and rerender
     setCells(copiedCells);
-
-    //switch players
   };
 
   useEffect(() => {
@@ -197,15 +184,11 @@ const AmobaGrid = ({ username }) => {
           );
         })
       )}
-      <div>
-        <div>
-          {username.map((el) => (
-            <div>{el}</div>
-          ))}
-          {/* {switchPlayer === 1 ? <div> {}</div> : <div>{}</div>} */}
-        </div>
+      <div className="reset-btn-container">
+        {/* {switchPlayer === 1 ? <div> {}</div> : <div>{}</div>} */}
+
         <button className="reset-btn" onClick={handleReset}>
-          reset
+          új játék
         </button>
       </div>
     </div>

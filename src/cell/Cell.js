@@ -5,7 +5,7 @@ const Cell = ({ id, value, changeColor }) => {
     <div
       key={id}
       className={
-        value === 0 ? "player1_cell" : value === 1 ? "x player2_cell" : "cell"
+        value === 2 ? "player1_cell" : value === 1 ? "x player2_cell" : "cell"
       }
       onClick={() => changeColor(id)}
     ></div>

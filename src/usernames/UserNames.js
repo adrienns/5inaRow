@@ -32,9 +32,15 @@ const UserNames = ({ username, setUsername }) => {
         Játékos 2
         <input type="text" name="player2" onChange={handlePlayer2} />
       </label>
-      <button className="submit-btn" type="submit" onClick={submitPlayerNames}>
-        kuldes
-      </button>
+      <div className="btn-container">
+        <button
+          className="submit-btn"
+          type="submit"
+          onClick={submitPlayerNames}
+        >
+          küldés
+        </button>
+      </div>
     </div>
   );
 };

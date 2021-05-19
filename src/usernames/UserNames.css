@@ -1,16 +1,27 @@
 .user-inputs {
-  display: flex;
-  flex-direction: column;
   margin-top: 30px;
 }
 
 .user-inputs input {
   width: 70%;
   margin-left: 20px;
-  margin-top: 30px;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
 .submit-btn {
   padding: 10px;
   margin: 20px;
+  border-radius: 20px;
+  justify-content: flex-end;
+  color: rgb(255, 255, 255);
+  background-color: rgb(214, 95, 95);
+  font-size: larger;
+  background-color: rgba(255, 138, 138, 1);
+  box-shadow: inset 0px 0 25px rgb(252, 68, 68);
 }

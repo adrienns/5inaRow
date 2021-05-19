@@ -1,16 +1,25 @@
 .grid-cells {
   display: grid;
   grid-template-columns: repeat(10, 30px);
+  justify-content: center;
 }
 
+.reset-btn-container {
+  display: flex;
+  justify-content: flex-end;
+
+  width: 300px;
+}
 .reset-btn {
   text-transform: uppercase;
 
   margin-top: 15px;
-  padding: 7px;
 
-  border: solid white;
+  padding: 9px;
+  color: white;
+  border: solid rgb(139, 69, 62);
   border-radius: 40px;
-  background-color: rgba(255, 138, 138, 1);
-  box-shadow: inset 0 0 20px rgb(252, 68, 68);
+  background-color: rgb(252, 98, 81);
+  box-shadow: inset 0 0 20px rgb(161, 62, 62);
+  font-weight: bold;
 }
