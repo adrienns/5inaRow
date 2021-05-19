@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+
+import "./App.css";
+import AmobaGrid from "./amoba_grid/AmobaGrid";
+import Rules from "./rules/Rules";
+import UserNames from "./usernames/UserNames";
 
 function App() {
+  const [username, setUsername] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+      <div className="game-description-container">
+        <Rules />
+        <UserNames username={username} setUsername={setUsername} />
+      </div>
+      <div className="grid-container">
+        <h1 className="header-text">Amőba játék</h1>
+
+        <AmobaGrid username={username} setUsername={setUsername} />
+      </div>
     </div>
   );
 }
