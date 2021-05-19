@@ -19,6 +19,8 @@ const UserNames = ({ username, setUsername }) => {
   const submitPlayerNames = (e) => {
     e.preventDefault();
     setUsername([...username, player1, player2]);
+    setPlayer2("");
+    setPlayer1("");
   };
 
   return (
@@ -26,12 +28,22 @@ const UserNames = ({ username, setUsername }) => {
       <h3>Válassz nevet:</h3>
       <label>
         Játékos 1
-        <input type="text" name="player1" onChange={handlePlayer1} />
+        <input
+          type="text"
+          name="player1"
+          value={player1}
+          onChange={handlePlayer1}
+        />
       </label>
 
       <label>
         Játékos 2
-        <input type="text" name="player2" onChange={handlePlayer2} />
+        <input
+          type="text"
+          name="player2"
+          value={player2}
+          onChange={handlePlayer2}
+        />
       </label>
       <div className="btn-container">
         <button
