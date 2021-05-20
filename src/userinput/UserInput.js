@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import "./UserNames.css";
+import "./UserInput.css";
 
-const UserNames = ({ username, setUsername }) => {
+const UserInput = ({ userInput, setUserInput }) => {
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
+  const [gridSize, setGridSize] = useState(10);
 
   console.log(player1, player2);
 
@@ -16,9 +17,13 @@ const UserNames = ({ username, setUsername }) => {
     setPlayer2(value);
   };
 
+  const handleGridSize = (e) => {
+    const value = e.target.value;
+    setGridSize(value);
+  };
   const submitPlayerNames = (e) => {
     e.preventDefault();
-    setUsername([...username, player1, player2]);
+    setUserInput([...userInput, player1, player2, gridSize]);
     setPlayer2("");
     setPlayer1("");
   };
@@ -45,6 +50,13 @@ const UserNames = ({ username, setUsername }) => {
           onChange={handlePlayer2}
         />
       </label>
+      <label>Válassz ki a palya meretet (pl. 10x10-es palya): </label>
+      <input
+        className="gridsize-input-field"
+        type="text"
+        name="gridsize"
+        onChange={handleGridSize}
+      />
       <div className="btn-container">
         <button
           className="submit-btn"
@@ -58,4 +70,4 @@ const UserNames = ({ username, setUsername }) => {
   );
 };
 
-export default UserNames;
+export default UserInput;

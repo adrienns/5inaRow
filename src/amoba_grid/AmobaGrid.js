@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import Cell from "../cell/Cell";
 import "./AmobaGrid.css";
 
-const GRID_NUM = 10;
-const AmobaGrid = () => {
+const AmobaGrid = ({ userInput }) => {
   const [cells, setCells] = useState([]);
   const [switchPlayer, setSwitchPlayer] = useState(1);
+
+  console.log(userInput);
+  const GRID_NUM = userInput.length === 0 ? 10 : parseInt(userInput[2]);
 
   const checkWinnerInRows = (playerId) => {
     let score = 0;
