@@ -15,25 +15,26 @@
 
 .player1_cell {
   background-color: rgba(255, 138, 138, 1);
-
   border: solid white;
   border-width: 4px;
-  padding: 6px;
-  height: 10px;
+  padding: 7px;
+  height: 7px;
+  width: 9px;
   border-radius: 50%;
 }
 
 .player2_cell {
-  width: 20px;
-  height: 20px;
+  width: 17px;
+
+  padding-bottom: 23px;
+  padding-left: 13px;
+
   position: relative;
-  margin-left: 12px;
 }
 .player2_cell:after {
   content: "";
   height: 26px;
   border-left: 4px solid #fff;
-
   position: absolute;
   transform: rotate(45deg);
 }
@@ -41,7 +42,6 @@
 .player2_cell:before {
   content: "";
   height: 26px;
-
   border-left: 4px solid #fff;
   position: absolute;
   transform: rotate(-45deg);

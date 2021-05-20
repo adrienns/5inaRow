@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./UserInput.css";
 
-const UserInput = ({ userInput, setUserInput }) => {
+const UserInput = ({ userInput, setUserInput, setGridSize }) => {
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
-  const [gridSize, setGridSize] = useState(10);
 
   console.log(player1, player2);
 
@@ -23,7 +22,7 @@ const UserInput = ({ userInput, setUserInput }) => {
   };
   const submitPlayerNames = (e) => {
     e.preventDefault();
-    setUserInput([...userInput, player1, player2, gridSize]);
+    setUserInput([...userInput, player1, player2]);
     setPlayer2("");
     setPlayer1("");
   };

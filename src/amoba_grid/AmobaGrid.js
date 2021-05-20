@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import Cell from "../cell/Cell";
 import "./AmobaGrid.css";
 
-const AmobaGrid = ({ userInput }) => {
+const AmobaGrid = ({ userInput, gridSize }) => {
   const [cells, setCells] = useState([]);
   const [switchPlayer, setSwitchPlayer] = useState(1);
 
-  console.log(userInput);
-  const GRID_NUM = userInput.length === 0 ? 10 : parseInt(userInput[2]);
+  const GRID_NUM = gridSize;
 
   const checkWinnerInRows = (playerId) => {
     let score = 0;
@@ -170,7 +169,7 @@ const AmobaGrid = ({ userInput }) => {
 
   useEffect(() => {
     createCells();
-  }, []);
+  }, [userInput]);
 
   return (
     <table className="grid-cells">
