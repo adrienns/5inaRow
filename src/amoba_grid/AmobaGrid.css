@@ -1,6 +1,6 @@
 .grid-cells {
   display: grid;
-  grid-template-columns: repeat(10, 30px);
+  /* grid-template-columns: repeat(10, 30px); */
   justify-content: center;
 }
 
@@ -17,7 +17,7 @@
 
   padding: 11px;
   color: white;
-  border: solid rgb(110, 56, 51);
+  /* border: solid rgb(110, 56, 51); */
   border-width: 1.5px;
   border-radius: 10px;
   background-color: rgb(250, 123, 123);

@@ -105,8 +105,9 @@ const AmobaGrid = () => {
           { coordinates: [x, y], isChecked: false, value: "", id: count },
         ];
 
-        if (y % GRID_NUM === 9) {
+        if (y % GRID_NUM === GRID_NUM - 1) {
           outer_arr = [...outer_arr, inner_arr];
+
           inner_arr = [];
         }
       }
@@ -170,20 +171,24 @@ const AmobaGrid = () => {
   }, []);
 
   return (
-    <div className="grid-cells">
-      {cells.map((subarray, i) =>
-        subarray.map((el, i) => {
-          return (
-            <Cell
-              changeColor={changeColor}
-              key={i}
-              id={el.id}
-              cell={el}
-              value={el.value}
-            />
-          );
-        })
-      )}
+    <table className="grid-cells">
+      {cells.map((subarray, i) => {
+        return (
+          <tr>
+            {subarray.map((el, i) => {
+              return (
+                <Cell
+                  changeColor={changeColor}
+                  key={i}
+                  id={el.id}
+                  cell={el}
+                  value={el.value}
+                />
+              );
+            })}
+          </tr>
+        );
+      })}
       <div className="reset-btn-container">
         {/* {switchPlayer === 1 ? <div> {}</div> : <div>{}</div>} */}
 
@@ -191,7 +196,7 @@ const AmobaGrid = () => {
           új játék
         </button>
       </div>
-    </div>
+    </table>
   );
 };
 
