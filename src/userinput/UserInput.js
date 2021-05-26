@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./UserInput.css";
 
-const UserInput = ({ userInput, setUserInput, setGridSize }) => {
+const UserInput = ({ userInput, setUserInput, setGridSize, setModalOpen }) => {
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
 
@@ -23,6 +23,7 @@ const UserInput = ({ userInput, setUserInput, setGridSize }) => {
   const submitPlayerNames = (e) => {
     e.preventDefault();
     setUserInput([...userInput, player1, player2]);
+    setModalOpen(false);
     setPlayer2("");
     setPlayer1("");
   };

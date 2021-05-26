@@ -1,0 +1,14 @@
+.winner-modal-container {
+  position: fixed;
+  z-index: 999;
+  top: 20%;
+  left: 30%;
+  right: 30%;
+  bottom: 20%;
+  color: white;
+  font-size: 40px;
+  background: rgba(253, 139, 139, 0.747);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

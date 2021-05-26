@@ -1,6 +1,5 @@
 .grid-cells {
   display: grid;
-  /* grid-template-columns: repeat(10, 30px); */
   justify-content: center;
 }
 
@@ -34,4 +33,21 @@
   transition: 0.5s;
   background-color: rgb(252, 113, 113);
   cursor: pointer;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.users {
+  margin-top: 127px;
+  margin-left: 40px;
+  color: rgb(65, 60, 60);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.player1-text {
+  margin-bottom: 10px;
 }

@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import Cell from "../cell/Cell";
 import "./AmobaGrid.css";
+import WinnerModal from "../winner-modal/WinnerModal";
 
-const AmobaGrid = ({ userInput, gridSize }) => {
+const AmobaGrid = ({
+  userInput,
+  gridSize,
+  setWinnerModalOpen,
+  winnerModalIsOpen,
+}) => {
   const [cells, setCells] = useState([]);
   const [switchPlayer, setSwitchPlayer] = useState(1);
+  const [winnerId, setWinnerId] = useState("");
 
   const GRID_NUM = gridSize;
 
@@ -22,7 +29,8 @@ const AmobaGrid = ({ userInput, gridSize }) => {
         }
 
         if (score === 5) {
-          alert(`player ${playerId} won`);
+          setWinnerId(playerId);
+          setWinnerModalOpen(true);
         }
       }
     }
@@ -41,7 +49,7 @@ const AmobaGrid = ({ userInput, gridSize }) => {
         }
         if (score === 5) {
           if (score === 5) {
-            alert(`player ${playerId} won`);
+            return setWinnerId(playerId);
           }
         }
       }
@@ -88,7 +96,8 @@ const AmobaGrid = ({ userInput, gridSize }) => {
           scoreOppositeLeft === 5 ||
           scoreOppositeRight === 5
         ) {
-          alert(`player ${playerId} won`);
+          setWinnerId(playerId);
+          setWinnerModalOpen(true);
         }
       }
     }
@@ -172,32 +181,44 @@ const AmobaGrid = ({ userInput, gridSize }) => {
   }, [userInput]);
 
   return (
-    <table className="grid-cells">
-      {cells.map((subarray, i) => {
-        return (
-          <tr>
-            {subarray.map((el, i) => {
-              return (
-                <Cell
-                  changeColor={changeColor}
-                  key={i}
-                  id={el.id}
-                  cell={el}
-                  value={el.value}
-                />
-              );
-            })}
-          </tr>
-        );
-      })}
-      <div className="reset-btn-container">
-        {/* {switchPlayer === 1 ? <div> {}</div> : <div>{}</div>} */}
+    <div className="grid-container">
+      <WinnerModal
+        winnerModalIsOpen={winnerModalIsOpen}
+        winnerId={winnerId}
+        userInput={userInput}
+      />
+      <table className="grid-cells">
+        <h1 className="header-text">Amőba játék</h1>
+        {cells.map((subarray, i) => {
+          return (
+            <tr>
+              {subarray.map((el, i) => {
+                return (
+                  <Cell
+                    changeColor={changeColor}
+                    key={i}
+                    id={el.id}
+                    cell={el}
+                    value={el.value}
+                  />
+                );
+              })}
+            </tr>
+          );
+        })}
+        <div className="reset-btn-container">
+          {/* {switchPlayer === 1 ? <div> {}</div> : <div>{}</div>} */}
 
-        <button className="reset-btn" onClick={handleReset}>
-          új játék
-        </button>
+          <button className="reset-btn" onClick={handleReset}>
+            új játék
+          </button>
+        </div>
+      </table>
+      <div className="users">
+        <div className="player1-text"> Játékos 1 : {userInput[0]}</div>
+        <div> Játékos 2 : {userInput[1]}</div>
       </div>
-    </table>
+    </div>
   );
 };
 
