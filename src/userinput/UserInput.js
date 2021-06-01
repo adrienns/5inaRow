@@ -1,9 +1,17 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UserInput.css";
+import GridLimitModalText from "../GridLimitModalText";
 
-const UserInput = ({ userInput, setUserInput, setGridSize, setModalOpen }) => {
+const UserInput = ({
+  userInput,
+  setUserInput,
+  setGridSize,
+  setModalOpen,
+  gridSize,
+}) => {
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
+  const [isGridLimitedExceeded, setIsGridLimitedExceeded] = useState(false);
 
   console.log(player1, player2);
 
@@ -22,42 +30,68 @@ const UserInput = ({ userInput, setUserInput, setGridSize, setModalOpen }) => {
   };
   const submitPlayerNames = (e) => {
     e.preventDefault();
-    setUserInput([...userInput, player1, player2]);
-    setModalOpen(false);
-    setPlayer2("");
-    setPlayer1("");
+    if (isGridLimitedExceeded == false) {
+      setUserInput([...userInput, player1, player2]);
+      setModalOpen(false);
+      setPlayer2("");
+      setPlayer1("");
+    }
   };
 
-  return (
-    <div className="user-inputs">
-      <h3>Válassz nevet:</h3>
-      <label>
-        Játékos 1
-        <input
-          type="text"
-          name="player1"
-          value={player1}
-          onChange={handlePlayer1}
-        />
-      </label>
+  const checkGridLimit = () => {
+    if (gridSize <= 30) {
+      console.log(gridSize);
+      setIsGridLimitedExceeded(false);
+    } else {
+      setIsGridLimitedExceeded(true);
+    }
+  };
 
-      <label>
-        Játékos 2
-        <input
-          type="text"
-          name="player2"
-          value={player2}
-          onChange={handlePlayer2}
-        />
-      </label>
-      <label>Válassz ki a palya meretet (pl. 10x10-es palya): </label>
-      <input
-        className="gridsize-input-field"
-        type="text"
-        name="gridsize"
-        onChange={handleGridSize}
-      />
-      <div className="btn-container">
+  useEffect(() => {
+    checkGridLimit();
+  }, [gridSize]);
+
+  return (
+    <React.Fragment>
+      <h3>Choose a name:</h3>
+      <div className="user-input-list">
+        <div className="form-row">
+          <label className="name-label"> Player 1</label>
+
+          <input
+            className="name-input-field"
+            type="text"
+            name="player1"
+            value={player1}
+            onChange={handlePlayer1}
+          />
+        </div>
+        <div className="form-row">
+          <label className="name-label"> Player 2 </label>
+
+          <input
+            className="name-input-field"
+            type="text"
+            name="player2"
+            value={player2}
+            onChange={handlePlayer2}
+          />
+        </div>
+        <div className="form-row">
+          <label className="name-label">
+            Type the size of the grid(f.e. 10 = 10x10):{" "}
+          </label>
+          <input
+            className="gridsize-input-field"
+            type="text"
+            name="gridsize"
+            onChange={handleGridSize}
+          />
+        </div>
+      </div>
+      <div>{isGridLimitedExceeded ? <GridLimitModalText /> : null}</div>
+
+      <li className="btn-container">
         <button
           className="submit-btn"
           type="submit"
@@ -65,8 +99,8 @@ const UserInput = ({ userInput, setUserInput, setGridSize, setModalOpen }) => {
         >
           küldés
         </button>
-      </div>
-    </div>
+      </li>
+    </React.Fragment>
   );
 };
 

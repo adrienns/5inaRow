@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="main-container">
       {modalIsOpen ? (
-        <div class="modal">
+        <div className="modal">
           <div className="game-description-modal-content">
             <Rules />
             <UserInput
@@ -26,7 +26,18 @@ function App() {
           </div>
         </div>
       ) : null}
-
+      <div>
+        <h2 className="header-text">5 in a Row</h2>
+        <div className="players-button-container">
+          <div className="users">
+            <div className="player1-text"> Player 1 : {userInput[0]}</div>
+            <div> Player 2 : {userInput[1]}</div>
+          </div>
+          <div className="reset-btn-container">
+            <button className="reset-btn">reset</button>
+          </div>
+        </div>
+      </div>
       <AmobaGrid
         userInput={userInput}
         setUserInput={setUserInput}

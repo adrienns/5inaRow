@@ -182,42 +182,32 @@ const AmobaGrid = ({
 
   return (
     <div className="grid-container">
-      <WinnerModal
-        winnerModalIsOpen={winnerModalIsOpen}
-        winnerId={winnerId}
-        userInput={userInput}
-      />
       <table className="grid-cells">
-        <h1 className="header-text">Amőba játék</h1>
-        {cells.map((subarray, i) => {
-          return (
-            <tr>
-              {subarray.map((el, i) => {
-                return (
-                  <Cell
-                    changeColor={changeColor}
-                    key={i}
-                    id={el.id}
-                    cell={el}
-                    value={el.value}
-                  />
-                );
-              })}
-            </tr>
-          );
-        })}
-        <div className="reset-btn-container">
-          {/* {switchPlayer === 1 ? <div> {}</div> : <div>{}</div>} */}
-
-          <button className="reset-btn" onClick={handleReset}>
-            új játék
-          </button>
-        </div>
+        <WinnerModal
+          winnerModalIsOpen={winnerModalIsOpen}
+          winnerId={winnerId}
+          userInput={userInput}
+        />
+        <tbody>
+          {cells.map((subarray, i) => {
+            return (
+              <tr key={i}>
+                {subarray.map((el, i) => {
+                  return (
+                    <Cell
+                      changeColor={changeColor}
+                      key={i}
+                      id={el.id}
+                      cell={el}
+                      value={el.value}
+                    />
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
-      <div className="users">
-        <div className="player1-text"> Játékos 1 : {userInput[0]}</div>
-        <div> Játékos 2 : {userInput[1]}</div>
-      </div>
     </div>
   );
 };

@@ -3,13 +3,11 @@ import "./WinnerModal.css";
 
 const WinnerModal = ({ winnerModalIsOpen, winnerId, userInput }) => {
   console.log(winnerId);
-
   return (
     <React.Fragment>
       {winnerModalIsOpen ? (
         <div className="winner-modal-container">
-          {" "}
-          <span> {userInput[winnerId]} </span> te nyertel!
+          <span> {userInput[winnerId]} </span>, you won! :)
         </div>
       ) : null}
     </React.Fragment>
