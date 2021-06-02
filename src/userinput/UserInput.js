@@ -50,7 +50,7 @@ const UserInput = ({
 
   return (
     <React.Fragment>
-      <h3>Choose a name:</h3>
+      <h4>Choose a name:</h4>
       <div className="user-input-list">
         <div className="form-row">
           <label className="name-label"> Player 1</label>
