@@ -38,18 +38,21 @@ const AmobaGrid = ({
 
   const checkWinnerInColoumns = (playerId) => {
     let score = 0;
+
     let i = 0;
     for (i; i < cells.length; i++) {
       for (let j = 0; j < cells.length; j++) {
         let currentObj = cells[j][i];
         if (currentObj.value === playerId) {
           score += 1;
+          debugger;
         } else {
           score = 0;
         }
         if (score === 5) {
           if (score === 5) {
-            return setWinnerId(playerId);
+            setWinnerId(playerId);
+            setWinnerModalOpen(true);
           }
         }
       }
@@ -181,33 +184,49 @@ const AmobaGrid = ({
   }, [userInput]);
 
   return (
-    <div className="grid-container">
-      <table className="grid-cells">
+    <div>
+      <div>
+        <h2 className="header-text">5 in a Row</h2>
+        <div className="players-button-container">
+          <div className="users">
+            <div className="player1-text"> Player 1 : {userInput[0]}</div>
+            <div> Player 2 : {userInput[1]}</div>
+          </div>
+          <div className="reset-btn-container">
+            <button onClick={handleReset} className="reset-btn">
+              reset
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="grid-container">
         <WinnerModal
           winnerModalIsOpen={winnerModalIsOpen}
           winnerId={winnerId}
           userInput={userInput}
         />
-        <tbody>
-          {cells.map((subarray, i) => {
-            return (
-              <tr key={i}>
-                {subarray.map((el, i) => {
-                  return (
-                    <Cell
-                      changeColor={changeColor}
-                      key={i}
-                      id={el.id}
-                      cell={el}
-                      value={el.value}
-                    />
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+        <table className="grid-cells">
+          <tbody>
+            {cells.map((subarray, i) => {
+              return (
+                <tr key={i}>
+                  {subarray.map((el, i) => {
+                    return (
+                      <Cell
+                        changeColor={changeColor}
+                        key={i}
+                        id={el.id}
+                        cell={el}
+                        value={el.value}
+                      />
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

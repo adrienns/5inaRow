@@ -13,8 +13,6 @@ const UserInput = ({
   const [player2, setPlayer2] = useState("");
   const [isGridLimitedExceeded, setIsGridLimitedExceeded] = useState(false);
 
-  console.log(player1, player2);
-
   const handlePlayer1 = (e) => {
     const value = e.target.value;
     setPlayer1(value);
@@ -40,7 +38,6 @@ const UserInput = ({
 
   const checkGridLimit = () => {
     if (gridSize <= 30) {
-      console.log(gridSize);
       setIsGridLimitedExceeded(false);
     } else {
       setIsGridLimitedExceeded(true);

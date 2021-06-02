@@ -4,10 +4,10 @@
 
 .game-description-modal-content {
   width: 490px;
-  height: 350px;
+  height: 380px;
 
   background-color: rgb(50, 53, 47);
-  margin: 60px 20px 0px 20px;
+  margin: 70px 20px 0px 10px;
 
   justify-content: center;
   padding: 20px;
@@ -38,11 +38,9 @@
   padding: 10px;
   font-size: 35px;
 }
-.reset-btn-container {
-}
+
 .reset-btn {
   text-transform: uppercase;
-
   font-size: 12px;
   width: 65px;
   padding: 11px;
@@ -69,4 +67,9 @@
   display: flex;
   justify-content: center;
   margin: 20px;
+}
+
+.error-msg {
+  color: red;
+  font-style: italic;
 }

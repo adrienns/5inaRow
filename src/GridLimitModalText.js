@@ -1,5 +1,11 @@
+import "./App.css";
+
 const GridLimitModalText = () => {
-  return <div>The maximum grid is x 40. Please choose a smaller number</div>;
+  return (
+    <div className="error-msg">
+      The maximum grid is 30 x 30. Please choose a smaller number
+    </div>
+  );
 };
 
 export default GridLimitModalText;
