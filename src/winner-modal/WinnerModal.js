@@ -1,7 +1,18 @@
 import React from "react";
 import "./WinnerModal.css";
 
-const WinnerModal = ({ winnerModalIsOpen, winnerId, userInput }) => {
+const WinnerModal = ({
+  winnerModalIsOpen,
+  winnerId,
+  userInput,
+  setModalOpen,
+  handleReset,
+}) => {
+  const handleGameWithNewPlayers = () => {
+    setModalOpen(true);
+    handleReset();
+  };
+
   return (
     <React.Fragment>
       {winnerModalIsOpen ? (
@@ -10,8 +21,10 @@ const WinnerModal = ({ winnerModalIsOpen, winnerId, userInput }) => {
             <span> {userInput[winnerId - 1]} </span>, you won! :)
           </div>
           <div className="new-game-btn-wrapper">
-            <button>New Game</button>
-            <button>Reset With New Players</button>
+            <button onClick={handleReset}>New Game</button>
+            <button onClick={handleGameWithNewPlayers}>
+              Reset With New Players
+            </button>
           </div>
         </div>
       ) : null}

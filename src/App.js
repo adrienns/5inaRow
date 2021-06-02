@@ -28,6 +28,8 @@ function App() {
       ) : null}
 
       <AmobaGrid
+        setModalOpen={setModalOpen}
+        modalIsOpen={modalIsOpen}
         userInput={userInput}
         setUserInput={setUserInput}
         gridSize={gridSize}

@@ -8,6 +8,7 @@ const AmobaGrid = ({
   gridSize,
   setWinnerModalOpen,
   winnerModalIsOpen,
+  setModalOpen,
 }) => {
   const [cells, setCells] = useState([]);
   const [switchPlayer, setSwitchPlayer] = useState(1);
@@ -132,6 +133,7 @@ const AmobaGrid = ({
   const handleReset = () => {
     setCells("");
     createCells();
+    setWinnerModalOpen(false);
   };
 
   const getIndex = (copiedCells, id) => {
@@ -201,6 +203,8 @@ const AmobaGrid = ({
       </div>
       <div className="grid-container">
         <WinnerModal
+          setModalOpen={setModalOpen}
+          handleReset={handleReset}
           winnerModalIsOpen={winnerModalIsOpen}
           winnerId={winnerId}
           userInput={userInput}
